@@ -3,9 +3,9 @@ C:\Users\xinyu\Desktop\GitHub\ASP.NET_Project1\TheWorld\TheWorld\bin\Debug\netco
 C:\Users\xinyu\Desktop\GitHub\ASP.NET_Project1\TheWorld\TheWorld\bin\Debug\netcoreapp1.1\TheWorld.runtimeconfig.dev.json
 C:\Users\xinyu\Desktop\GitHub\ASP.NET_Project1\TheWorld\TheWorld\bin\Debug\netcoreapp1.1\TheWorld.dll
 C:\Users\xinyu\Desktop\GitHub\ASP.NET_Project1\TheWorld\TheWorld\bin\Debug\netcoreapp1.1\TheWorld.pdb
-C:\Users\xinyu\Desktop\GitHub\ASP.NET_Project1\TheWorld\TheWorld\obj\Debug\netcoreapp1.1\TheWorld.csprojResolveAssemblyReference.cache
 C:\Users\xinyu\Desktop\GitHub\ASP.NET_Project1\TheWorld\TheWorld\obj\Debug\netcoreapp1.1\TheWorld.csproj.CoreCompileInputs.cache
 C:\Users\xinyu\Desktop\GitHub\ASP.NET_Project1\TheWorld\TheWorld\obj\Debug\netcoreapp1.1\TheWorld.AssemblyInfoInputs.cache
 C:\Users\xinyu\Desktop\GitHub\ASP.NET_Project1\TheWorld\TheWorld\obj\Debug\netcoreapp1.1\TheWorld.AssemblyInfo.cs
 C:\Users\xinyu\Desktop\GitHub\ASP.NET_Project1\TheWorld\TheWorld\obj\Debug\netcoreapp1.1\TheWorld.dll
 C:\Users\xinyu\Desktop\GitHub\ASP.NET_Project1\TheWorld\TheWorld\obj\Debug\netcoreapp1.1\TheWorld.pdb
+C:\Users\xinyu\Desktop\GitHub\ASP.NET_Project1\TheWorld\TheWorld\obj\Debug\netcoreapp1.1\TheWorld.csprojResolveAssemblyReference.cache
