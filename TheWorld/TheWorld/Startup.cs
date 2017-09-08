@@ -28,6 +28,11 @@ namespace TheWorld
             //{
             //    app.UseDeveloperExceptionPage();
             //}
+            if (env.IsEnvironment("Development"))
+            {
+                app.UseDeveloperExceptionPage();
+            }
+            
 
             //app.UseDefaultFiles();
             app.UseStaticFiles();
