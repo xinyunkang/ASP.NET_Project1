@@ -28,7 +28,7 @@
                 <button id="sidebarToggle">Toggle Menu</button>
             </div>
 
-            @RenderBody();
+            @RenderBody()
         </div>
         <div id="footer">
             &copy; 2017 The World Ltd.
@@ -36,6 +36,7 @@
     </div>
 
     <script type="text/javascript" src="~/lib/jquery/dist/jquery.min.js"></script>
+    @RenderSection("scripts", false)
     <script type="text/javascript" src="~/js/site.js"></script>
 
 
