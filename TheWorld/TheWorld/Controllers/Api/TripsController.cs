@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,26 +14,48 @@ namespace TheWorld.Controllers.Api
     public class TripsController: Controller
     {
         private IWorldRepository _repository;
+        private ILogger<TripsController> _logger;
 
-        public TripsController(IWorldRepository repository)
+        public TripsController(IWorldRepository repository, ILogger<TripsController> logger)
         {
             _repository = repository;
+            _logger = logger;
         }
 
 
         [HttpGet("")]
         public IActionResult Get()
         {
-            
-            return Ok(_repository.GetAllTrips());
+            try
+            {
+                var results = _repository.GetAllTrips();
+
+                return Ok(Mapper.Map<IEnumerable<TripViewModel>>(results));
+            }
+            catch(Exception ex)
+            {
+                _logger.LogError($"Fail to get All Trips: {ex}");
+                return BadRequest("Error occurred");
+            }
+        
         }
 
         [HttpPost("")]
-        public IActionResult Post([FromBody]TripViewModel theTrip)
+        public async Task<IActionResult> Post([FromBody]TripViewModel theTrip)
         {
             if (ModelState.IsValid)
             {
-                return Created($"api/trips/{theTrip.Name}", theTrip);
+                //save to the Database
+                var newTrip = Mapper.Map<Trip>(theTrip);
+                if(await _repository.SaveChangesAsync())
+                {
+                    return Created($"api/trips/{theTrip.Name}", Mapper.Map<TripViewModel>(newTrip)); //return the same type as the input which is TripViewModel
+
+                }
+                else
+                {
+                    return BadRequest("Failed to save changes to the database");
+                }
             }
             return BadRequest(ModelState);
         }
