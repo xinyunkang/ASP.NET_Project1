@@ -7,7 +7,7 @@ using TheWorld.Models;
 
 namespace TheWorld.Migrations
 {
-    [DbContext(typeof(worldContext))]
+    [DbContext(typeof(WorldContext))]
     [Migration("20170909213724_InitialDatabase")]
     partial class InitialDatabase
     {

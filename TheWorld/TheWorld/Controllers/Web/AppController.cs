@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
@@ -26,13 +27,26 @@ namespace TheWorld.Controllers.Web
             //_context = context;
             _repository = repository;
         }
-        public  IActionResult Index()
+        public IActionResult Index()
         {
-            //var data = _context.Trips.ToList();
-            var data = _repository.GetAllTrips();
-            return View(data);
+            return View();
         }
 
+        [Authorize]
+        public IActionResult Trips()
+        {
+            try
+            {
+                var data = _repository.GetAllTrips();
+
+                return View(data);
+            }
+            catch (Exception ex)
+            {
+                
+                return Redirect("/error");
+            }
+        }
         public IActionResult Contact()
         {
             return View();

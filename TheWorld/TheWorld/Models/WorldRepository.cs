@@ -10,10 +10,10 @@ namespace TheWorld.Models
 {
     public class WorldRepository : IWorldRepository
     {
-        private worldContext _context;
+        private WorldContext _context;
         private ILogger<WorldRepository> _logger;
 
-        public WorldRepository(worldContext context, ILogger<WorldRepository> logger)
+        public WorldRepository(WorldContext context, ILogger<WorldRepository> logger)
         {
             _context = context;
             _logger = logger;
