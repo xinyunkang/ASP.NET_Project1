@@ -13,6 +13,6 @@ namespace TheWorld.Models
         public DateTime DateCreated { get; set; }
         public string UserName { get; set; }
 
-        public ICollection<Stop> Stops { get; set; }
+        public ICollection<Stop> Stops { get; set; }  //Icollection is R/W   IEnumerable is R
     }
 }

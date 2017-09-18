@@ -11,12 +11,13 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
+
 using Newtonsoft.Json.Serialization;
 using TheWorld.Models;
 using TheWorld.Services;
 using TheWorld.ViewModels;
 using TheWorld.Controllers.Api;
+using Microsoft.Extensions.Logging;
 
 namespace TheWorld
 {
@@ -113,11 +114,13 @@ namespace TheWorld
             if (env.IsEnvironment("Development"))
             {
                 app.UseDeveloperExceptionPage();
-               
+                //factory.AddConsole(LogLevel.Information);
+                factory.AddProvider(new MyLoggerProvider());
             }
             else
             {
-                
+                //factory.AddConsole(LogLevel.Error);
+                factory.AddProvider(new MyLoggerProvider());
             }
 
             app.UseStaticFiles();

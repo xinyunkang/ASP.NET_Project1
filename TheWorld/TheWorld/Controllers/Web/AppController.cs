@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,15 +18,21 @@ namespace TheWorld.Controllers.Web
         private IMailService _mailService;
         private IConfigurationRoot _config;
         private IWorldRepository _repository;
+        private ILogger<AppController> _logger;
 
         //private worldContext _context;
 
-        public AppController(IMailService mailService, IConfigurationRoot config, IWorldRepository repository)
+        public AppController(
+            IMailService mailService, 
+            IConfigurationRoot config, 
+            IWorldRepository repository,
+            ILogger<AppController> logger)
         {
             _mailService = mailService;
             _config = config;
             //_context = context;
             _repository = repository;
+            _logger = logger;
         }
         public IActionResult Index()
         {
@@ -43,7 +50,7 @@ namespace TheWorld.Controllers.Web
             }
             catch (Exception ex)
             {
-                
+                _logger.LogError($"Failed to get trips in Index page: {ex.Message}");
                 return Redirect("/error");
             }
         }

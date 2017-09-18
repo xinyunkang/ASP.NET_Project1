@@ -36,8 +36,8 @@ namespace TheWorld.Models
 
         public IEnumerable<Trip> GetAllTrips()
         {
-            _logger.LogInformation("Getting All Trips from the Database");
 
+            _logger.LogInformation("Getting all trips from the database");
             return _context.Trips.ToList();
         }
 

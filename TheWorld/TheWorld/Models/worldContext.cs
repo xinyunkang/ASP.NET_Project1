@@ -14,13 +14,13 @@ namespace TheWorld.Models
         private IConfigurationRoot _config;
 
         public WorldContext(IConfigurationRoot config, DbContextOptions options)
-          : base(options)
+          : base(options) // add this line to enable using onConfiguring.
         {
             _config = config;
         }
 
-        public DbSet<Trip> Trips { get; set; }
-        public DbSet<Stop> Stops { get; set; }
+        public DbSet<Trip> Trips { get; set; } //table name in db
+        public DbSet<Stop> Stops { get; set; }  //table name in db
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
