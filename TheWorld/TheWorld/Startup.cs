@@ -95,7 +95,7 @@ namespace TheWorld
             })
             .AddJsonOptions(config =>
             {
-                config.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+                config.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();  //camel Case the result.
             });
         }
 

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace TheWorld.Controllers.Api
+namespace TheWorld.ViewModels
 {
     public class TripViewModel
     {

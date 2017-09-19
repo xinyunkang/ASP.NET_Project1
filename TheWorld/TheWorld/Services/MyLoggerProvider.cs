@@ -28,7 +28,7 @@ namespace TheWorld.Services
             public void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception exception,
               Func<TState, Exception, string> formatter)
             {
-                File.AppendAllText(@"D:\temp\logTheWorld.txt", formatter(state, exception));
+                //File.AppendAllText(@"D:\temp\logTheWorld.txt", formatter(state, exception));
                 if (state is DbCommandLogData) //only output the actual command that are getting executed on the database.
                 {
                     Console.WriteLine(formatter(state, exception));
