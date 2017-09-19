@@ -36,7 +36,10 @@ namespace TheWorld.Controllers.Api
                 //var results = _repository.GetTripsByUsername(User.Identity.Name);
 
                 //return Ok(Mapper.Map<IEnumerable<TripViewModel>>(results));
-                return Ok(_repository.GetAllTrips());
+                //return Ok(_repository.GetAllTrips());
+                _logger.LogInformation("Inside GET()");   //works
+                var results = _repository.GetAllTrips();// IEnumerable<Trip> type
+                return Ok(Mapper.Map<IEnumerable<TripViewModel>>(results));
             }
             catch (Exception ex)
             {
@@ -49,14 +52,22 @@ namespace TheWorld.Controllers.Api
 
 
         [HttpPost("")]
-        public IActionResult Post([FromBody]TripViewModel theTrip)
+        public async Task<IActionResult> Post([FromBody]TripViewModel theTrip)
         {
             if (ModelState.IsValid)
             {
-
-                return Created($"api/trips/{theTrip.Name}", theTrip);
+                //save to the database;
+                var newTrip = Mapper.Map<Trip>(theTrip); //Map from TripViewModel type to Trip type. For repository.
+                _repository.AddTrip(newTrip);
+                if(await _repository.SaveChangesAsync())
+                {
+                    return Created($"api/trips/{theTrip.Name}", Mapper.Map<TripViewModel>(newTrip)); //Map from Trip type to TripViewModel 
+                }
+                
+                
             }
-            return BadRequest(ModelState);
+            
+            return BadRequest("Failed to save the trip");
         }
 
         //[HttpPost("")]

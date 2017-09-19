@@ -19,19 +19,30 @@ namespace TheWorld.Models
             _logger = logger;
         }
 
-        public void AddStop(string tripName, string username, Stop newStop)
+        //public void AddStop(string tripName, string username, Stop newStop)
+        //{
+        //    var trip = GetTripByName(tripName, username);
+
+        //    if (trip != null)
+        //    {
+        //        trip.Stops.Add(newStop);
+        //    }
+        //}
+
+        public void AddStop(string tripName,Stop newStop)
         {
-            var trip = GetTripByName(tripName, username);
+            var trip = GetTripByName(tripName);
 
             if (trip != null)
             {
-                trip.Stops.Add(newStop);
+                trip.Stops.Add(newStop);   //add new stops to the trip first
+                _context.Stops.Add(newStop); //Then  add stops to stop table.
             }
         }
 
         public void AddTrip(Trip trip)
         {
-            _context.Add(trip);
+            _context.Add(trip);  //save trip to the database
         }
 
         public IEnumerable<Trip> GetAllTrips()
@@ -49,16 +60,24 @@ namespace TheWorld.Models
               .FirstOrDefault();
         }
 
-        public object GetTripsByUsername(string name)
+        public Trip GetTripByName(string tripName)
         {
             return _context.Trips
-              .Where(t => t.UserName == name)
-              .ToList();
+              .Include(t => t.Stops)
+              .Where(t => t.Name == tripName)
+              .FirstOrDefault();
         }
+
+        //public object GetTripsByUsername(string name)
+        //{
+        //    return _context.Trips
+        //      .Where(t => t.UserName == name)
+        //      .ToList();
+        //}
 
         public async Task<bool> SaveChangesAsync()
         {
-            return (await _context.SaveChangesAsync()) > 0;
+            return (await _context.SaveChangesAsync()) > 0;  //return the number of rows affected.
         }
     }
 }

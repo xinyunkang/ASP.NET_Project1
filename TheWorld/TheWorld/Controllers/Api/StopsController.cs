@@ -33,8 +33,8 @@ namespace TheWorld.Controllers.Api
         {
             try
             {
-                var trip = _repository.GetTripByName(tripName, User.Identity.Name);
-
+                //var trip = _repository.GetTripByName(tripName, User.Identity.Name);
+                var trip = _repository.GetTripByName(tripName);
                 return Ok(Mapper.Map<IEnumerable<StopViewModel>>(trip.Stops.OrderBy(s => s.Order).ToList()));
             }
             catch (Exception ex)
@@ -66,9 +66,9 @@ namespace TheWorld.Controllers.Api
                         newStop.Latitude = result.Latitude;
                         newStop.Longitude = result.Longitude;
 
-                        // Save to the Database
-                        _repository.AddStop(tripName, User.Identity.Name, newStop);
-
+                        //Save to the Database
+                        //_repository.AddStop(tripName, User.Identity.Name, newStop);
+                        _repository.AddStop(tripName, newStop);
                         if (await _repository.SaveChangesAsync())
                         {
                             return Created($"/api/trips/{tripName}/stops/{newStop.Name}",
