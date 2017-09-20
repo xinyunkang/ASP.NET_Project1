@@ -15,6 +15,12 @@
                 name: "World Trip",
                 created: new Date()
             }];
+
+        vm.newTrip = {};
+        vm.addTrip = function () {
+            vm.trips.push({ name: vm.newTrip.name, created: new Date() });  //pass input to the table.
+            vm.newTrip = {}; //Tell the form the data is gone. clear the form.
+        }
     }
 
 

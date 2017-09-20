@@ -19,6 +19,21 @@
                 <td><a href="#" class="btn btn-sm btn-primary">Manage</a></td>
             </tr>
         </table>
+
+        <form novalidate name="newTripForm" ng-submit="vm.addTrip()">
+            <div class="form-group">
+                <label for="name">Trip Name</label>
+                <input class="form-control" type="text" id="name" name="name" ng-model="vm.newTrip.name" required ng-minlength="4"/>  <!--remember to add 'required' before ng-minlength-->
+                <span ng-show="newTripForm.name.$error.required" class="text-warning">Name is required.</span>
+                <span ng-show="newTripForm.name.$error.minlength" class="text-warning">Must be at least 4 charecters.</span>
+
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Add" class="btn btn-success btn-sm"
+                       ng-disabled="newTripForm.$invalid">  <!--$invalid will check if the form is ready to be submitted-->
+            </div>
+        </form>
+
     </div>
     <div class="col-md-6 col-xs-8">
         <h1>The World Trip</h1>
