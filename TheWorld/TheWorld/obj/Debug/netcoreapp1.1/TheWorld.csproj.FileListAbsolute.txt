@@ -8,3 +8,4 @@ C:\Users\xinyu\Desktop\GitHub\ASP.NET_Project1\TheWorld\TheWorld\obj\Debug\netco
 C:\Users\xinyu\Desktop\GitHub\ASP.NET_Project1\TheWorld\TheWorld\obj\Debug\netcoreapp1.1\TheWorld.AssemblyInfo.cs
 C:\Users\xinyu\Desktop\GitHub\ASP.NET_Project1\TheWorld\TheWorld\obj\Debug\netcoreapp1.1\TheWorld.dll
 C:\Users\xinyu\Desktop\GitHub\ASP.NET_Project1\TheWorld\TheWorld\obj\Debug\netcoreapp1.1\TheWorld.pdb
+C:\Users\xinyu\Desktop\GitHub\ASP.NET_Project1\TheWorld\TheWorld\obj\Debug\netcoreapp1.1\TheWorld.csprojResolveAssemblyReference.cache
